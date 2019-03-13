@@ -21,7 +21,7 @@ const routes = () => (
         </Route>
         <Route path="/login" component={Login}>
         </Route>
-        <Route path="/NotFound" getComponent={NotFound}></Route>
+        <Route path="/NotFound" component={NotFound}></Route>
         <Redirect from="*" to="/NotFound" />
     </Router>
 );
