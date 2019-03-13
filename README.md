@@ -1,6 +1,7 @@
-1.安装 npm i 
-2.启动 npm start
+### 1.安装 npm i 
+### 2.启动 npm start
 
+```
 src
  |——common
  |      |——service.js         封装请求接口
@@ -20,7 +21,7 @@ src
  |      |——...
  |——index.js                   入口文件
  |——setupProxy.js              配置代理 
-
+```
 
  包括最基本的redux框架。
  路由配置
