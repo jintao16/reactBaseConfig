@@ -4,6 +4,7 @@ const urlHttps = 'http://' + window.location.host;
 const URLS = {
     login: { url: urlHttps + '/business/basic/user/login', method: 'post' },
     getMenu: { url: urlHttps + '/business/basic/menu/get', method: 'get' },
+    index: { url: urlHttps + '/business/statistics/index', method: 'get' },
 }
 
 export function configAxios(urlType, params) {

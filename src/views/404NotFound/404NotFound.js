@@ -1,5 +1,5 @@
 import React from 'react'
-import './404notfound.less'
+import './404notfound.scss'
 export default class NotFound extends React.Component{
 
     render(){

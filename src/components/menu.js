@@ -3,19 +3,22 @@ import { Menu } from 'antd';
 import { connect } from 'react-redux';
 import { getMenu } from '../redux/actions/menu'
 import { Link } from 'react-router'
-// const SubMenu = Menu.SubMenu;
+import { browserHistory } from 'react-router';
+const SubMenu = Menu.SubMenu;
 // const MenuItemGroup = Menu.ItemGroup;
 
 class MainMenu extends React.Component {
     state = {
-        current: 'mail',
+        current: 'main',
     }
 
     componentWillMount() {
         this.props.getMenu()
-    }
-    componentWillReceiveProps() {
-        console.log(this)
+        console.log(browserHistory.getCurrentLocation())
+        const path = browserHistory.getCurrentLocation().pathname
+        this.setState({
+            current: path.substring(1, path.length)
+        })
     }
     handleClick = (e) => {
         console.log('click ', e);
@@ -30,14 +33,14 @@ class MainMenu extends React.Component {
             <Menu onClick={this.handleClick} selectedKeys={[this.state.current]} mode="horizontal" theme="dark">
                 {
                     this.props.mainMenuData.map(item => (
-                        
-                         <Menu.Item key={item.menuId} ><Link to={item.menuPath}>{item.menuName}</Link></Menu.Item>
-                        
+
+                        <Menu.Item key={item.menuPath} ><Link to={item.menuPath}>{item.menuName}</Link></Menu.Item>
+
                     ))
                 }
-                {/* {
+                {
                     this.props.mainMenuDataSub.map(item2 => (
-                        <SubMenu title={item2.menuName}>
+                        <SubMenu title={item2.menuName} key={item2.menuPath}>
                             {
                                 item2.children.map(item4 => (
                                     <Menu.Item key={item4.menuPath}>{item4.menuName}</Menu.Item>
@@ -45,7 +48,7 @@ class MainMenu extends React.Component {
                             }
                         </SubMenu>
                     ))
-                } */}
+                }
             </Menu>
         )
     }
